@@ -1,0 +1,73 @@
+// This is your Prisma schema file
+// learn more about it in the docs https//pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id                String         @id @default(auto()) @map("_id") @db.ObjectId
+  username          String         @unique
+  email             String         @unique
+  password          String         @unique
+  lastAuthenticated DateTime       @default(now())
+  registeredAt      String
+  isOnline          Boolean
+  saves             Saves[]
+  Achievements      Achievements[]
+}
+
+model Saves {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  Users            Users?   @relation(fields: [usersId], references: [id])
+  usersId          String?  @unique @db.ObjectId
+  lastSaveDate     DateTime @default(now()) @updatedAt
+  normalCurrency   Int
+  prestigeCurrency Int
+  totalEarnings    Int
+  pbUnlocked       Boolean  @default(false)
+  pbSoldAmount     Int
+  pbValue          Int
+  pbSpeed          Int
+  pbFrequency      Int
+  bxUnlocked       Boolean  @default(false)
+  bxSoldAmount     Int
+  bxValue          Int
+  bxSpeed          Int
+  bxFrequency      Int
+  glUnlocked       Boolean  @default(false)
+  glSoldAmount     Int
+  glValue          Int
+  glSpeed          Int
+  glFrequency      Int
+  byUnlocked       Boolean  @default(false)
+  bySoldAmount     Int
+  byValue          Int
+  bySpeed          Int
+  byFrequency      Int
+}
+
+model Achievements {
+  id                     String   @id @default(auto()) @map("_id") @db.ObjectId
+  normalCurrency_spent   Float    @default(0)
+  prestigeCurrency_spent Float    @default(0)
+  gemCurrency            Int      @default(0)
+  achievementProgress    String[] @default(["0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0", "0_0"])
+  itemLvl_1              Int      @default(0)
+  itemLvl_2              Int      @default(0)
+  itemLvl_3              Int      @default(0)
+  User                   Users?   @relation(fields: [usersId], references: [id])
+  usersId                String?  @db.ObjectId
+}
+
+model Logs {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  message String
+  madeBy  String
+  madeAt  DateTime @default(now())
+}

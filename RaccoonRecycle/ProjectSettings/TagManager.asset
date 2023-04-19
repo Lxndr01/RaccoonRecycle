@@ -5,6 +5,38 @@ TagManager:
   serializedVersion: 2
   tags:
   - UpgradePanel
+  - Battery
+  - PetBottle
+  - Box
+  - Glass
+  - Collider_PB
+  - Collider_BX
+  - Collider_GL
+  - Collider_BY
+  - Seller_PB
+  - Seller_BX
+  - Seller_GL
+  - Seller_BY
+  - DefSeller
+  - SellingScript
+  - WindowBehavior
+  - DatabaseCommunication
+  - ScrollSider
+  - GetSave
+  - PetBottleU
+  - BoxU
+  - GlassU
+  - BatteryU
+  - SliderMarker
+  - OfflineEarningsScript
+  - AchivementScript
+  - GemshopScript
+  - U1
+  - U2
+  - U3
+  - U4
+  - Collider_Prestige
+  - FixData
   layers:
   - Default
   - TransparentFX
@@ -12,8 +44,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Machinery
+  - Trash
   - 
   - 
   - 
